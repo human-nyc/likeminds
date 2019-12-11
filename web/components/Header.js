@@ -1,122 +1,44 @@
-import React, {Component} from 'react'
-import PropTypes from 'prop-types'
-import Link from 'next/link'
-import {withRouter} from 'next/router'
-import SVG from 'react-inlinesvg'
-import styles from './Header.module.css'
-import HamburgerIcon from './icons/Hamburger'
+import Logo from './Logo';
 
-class Header extends Component {
-  state = {showNav: false}
-
-  static propTypes = {
-    router: PropTypes.shape({
-      pathname: PropTypes.string,
-      query: PropTypes.shape({
-        slug: PropTypes.string
-      }),
-      events: PropTypes.any
-    }),
-    title: PropTypes.string,
-    navItems: PropTypes.arrayOf(
-      PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        slug: PropTypes.shape({
-          current: PropTypes.string
-        }).isRequired
-      })
-    ),
-    logo: PropTypes.shape({
-      asset: PropTypes.shape({
-        url: PropTypes.string
-      }),
-      logo: PropTypes.string
-    })
-  }
-
-  componentDidMount () {
-    const {router} = this.props
-    router.events.on('routeChangeComplete', this.hideMenu)
-  }
-
-  componentWillUnmount () {
-    const {router} = this.props
-    router.events.off('routeChangeComplete', this.hideMenu)
-  }
-
-  hideMenu = () => {
-    this.setState({showNav: false})
-  }
-
-  handleMenuToggle = () => {
-    const {showNav} = this.state
-    this.setState({
-      showNav: !showNav
-    })
-  }
-
-  renderLogo = logo => {
-    if (!logo || !logo.asset) {
-      return null
-    }
-
-    if (logo.asset.extension === 'svg') {
-      return <SVG src={logo.asset.url} className={styles.logo} />
-    }
-
-    return <img src={logo.asset.url} alt={logo.title} className={styles.logo} />
-  }
-
-  render () {
-    const {title = 'Missing title', navItems, router, logo} = this.props
-    const {showNav} = this.state
-
-    return (
-      <div className={styles.root} data-show-nav={showNav}>
-        <h1 className={styles.branding}>
-          <Link
-            href={{
-              pathname: '/LandingPage',
-              query: {
-                slug: '/'
-              }
-            }}
-            as='/'
-            prefetch
-          >
-            <a title={title}>{this.renderLogo(logo)}</a>
-          </Link>
-        </h1>
-        <nav className={styles.nav}>
-          <ul className={styles.navItems}>
-            {navItems &&
-              navItems.map(item => {
-                const {slug, title, _id} = item
-                const isActive =
-                  router.pathname === '/LandingPage' && router.query.slug === slug.current
-                return (
-                  <li key={_id} className={styles.navItem}>
-                    <Link
-                      href={{
-                        pathname: '/LandingPage',
-                        query: {slug: slug.current}
-                      }}
-                      as={`/${slug.current}`}
-                      prefetch
-                    >
-                      <a data-is-active={isActive ? 'true' : 'false'}>{title}</a>
-                    </Link>
-                  </li>
-                )
-              })}
-          </ul>
-          <button className={styles.showNavButton} onClick={this.handleMenuToggle}>
-            <HamburgerIcon className={styles.hamburgerIcon} />
-          </button>
-        </nav>
+const Header = (props) => {
+  return (
+    <div className='header'>
+      <div className='logo'>
+        <Logo />
       </div>
-    )
-  }
-}
 
-export default withRouter(Header)
+      <div className='header__info'>
+        <p><Logo classes='no-text' /> is well-curated weekend of speakers, music, workshops, food, and drink. Since 2016, our goal has been to bring together people of all backgrounds to explore a single theme through each-others work.</p>
+        <p>For the first time ever <Logo classes='no-text' /> IS coming to <span className='animate'>LOs ANGELES</span>, <span className='animate'>27-29 March</span> (2020).</p>
+      </div>
+
+      <div className='header__button'>
+        <a href='https://www.eventbrite.com/e/likeminds-west-tickets-85393449105?utm-medium=discovery&utm-campaign=social&utm-content=attendeeshare&aff=escb&utm-source=cp&utm-term=listing' target='_blank'>Tickets on sale now</a>
+
+        <div className='header__signup js-signup'>
+          <label htmlFor='headerSignup'>STAY TUNED FOR SPEAKER and MUSIC ANNOUNCEMENTS AS WELL SPECIFIC INFORMATION LEADING UP TO LIKEMINDS.</label>
+          <input
+            placeholder='Email Address&hellip;'
+            type='email'
+          />
+          <input type='submit' value='Sign Up' />
+        </div>
+      </div>
+
+      <ul className='header__socials'>
+        <li>
+          <a href='https://instagram.com/likeminds.camp' target='_blank'>instagram</a>
+        </li>
+        <li>
+          <a href='https://twitter.com/likeminds_camp' target='_blank'>twitter</a>
+        </li>
+        <li>
+          <a href='mailto:info@likeminds.com'>email</a>
+        </li>
+        <li><a href='#pastLikemind'>past likeminds</a></li>
+      </ul>
+    </div >
+  )
+};
+
+export default Header;
