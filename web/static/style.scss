@@ -1,0 +1,416 @@
+@font-face {
+  font-family: "SctoGroteskB";
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  src: url("/SctoGroteskBRegular.woff") format("woff");
+}
+
+:root {
+  // Colors
+  --black: #1a1a1a;
+  --grey: #afafaf;
+  --white: #fff;
+
+  --gutter: 15px;
+  --header-height: 120px;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --gutter: 20px;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--white);
+  color: var(--black);
+  font: normal 12px / 1.21 "SctoGroteskB";
+  margin: 0;
+}
+
+div {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+svg.no-text {
+  margin-right: -15px;
+  width: auto;
+  height: 13px;
+
+  .hide-text {
+    display: none;
+  }
+}
+
+.underline {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.header {
+  display: grid;
+  gap: 20px;
+  grid-template:
+    "logo" auto
+    "info" 1fr
+    "button" auto
+    "socials" auto
+    / auto;
+  height: 100vh;
+  font-size: 12px;
+  padding: var(--gutter);
+
+  @media (min-width: 768px) {
+    grid-template:
+      "logo info button socials" auto
+      / auto 1fr auto auto;
+    height: auto;
+  }
+
+  .logo {
+    grid-area: logo;
+
+    svg {
+      height: 100%;
+    }
+  }
+
+  &__info {
+    grid-area: info;
+    text-transform: uppercase;
+
+    p {
+      &:first-child {
+        margin-top: 0;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__button {
+    grid-area: button;
+    position: relative;
+
+    a {
+      background: transparent;
+      border: 1px solid;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      height: 100%;
+      padding: 16px 20px;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      @media (min-width: 768px) {
+        padding: 0 20px;
+      }
+
+      &:hover {
+        background: var(--black);
+        color: var(--white);
+      }
+    }
+  }
+
+  &__socials {
+    display: flex;
+    grid-area: socials;
+    list-style: none;
+    margin: 10px 0;
+    padding: 0;
+    text-transform: uppercase;
+
+    @media (min-width: 768px) {
+      flex-direction: column;
+      justify-content: space-between;
+      margin: 0;
+    }
+
+    li {
+      @media (max-width: 767px) {
+        margin-right: 15px;
+      }
+    }
+  }
+
+  &__signup {
+    display: none;
+    pointer-events: none;
+    position: absolute;
+    left: 0;
+    top: calc(100% + var(--gutter));
+    text-transform: uppercase;
+    width: 350px;
+
+    &.is-visible {
+      display: block;
+      pointer-events: auto;
+    }
+
+    label,
+    input {
+      display: block;
+    }
+
+    input {
+      border: 0;
+      font: normal 12px / 1.21 "SctoGroteskB";
+      padding: 0;
+      text-transform: uppercase;
+
+      &[type="email"] {
+        margin: 10px 0 0;
+        width: 100%;
+      }
+
+      &[type="submit"] {
+        cursor: pointer;
+      }
+
+      ::placeholder,
+      :-moz-placeholder,
+      ::-moz-placeholder,
+      :-ms-input-placeholder,
+      ::-webkit-input-placeholder {
+        color: var(--grey);
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.animate {
+  display: inline-flex;
+  overflow: hidden;
+  position: relative;
+
+  &::before {
+    animation: flitter 3s ease infinite;
+    background: white;
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    top: 0;
+    width: 7.5px;
+  }
+}
+
+@keyframes flitter {
+  from {
+    left: 0;
+  }
+
+  to {
+    left: 300%;
+  }
+}
+
+.footer {
+  padding: var(--gutter);
+  text-transform: uppercase;
+}
+
+.main {
+  padding: 0 var(--gutter);
+
+  @media (min-width: 768px) {
+    margin: 0 0 100px;
+    min-height: calc(100vh - var(--header-height));
+  }
+
+  h1 {
+    margin: 0;
+  }
+
+  dl {
+    max-width: 300px;
+  }
+
+  dt {
+    font-size: 20px;
+    margin: 3em 0 0.25em;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  dd {
+    margin: 0;
+  }
+}
+
+.likemind {
+  border-top: 1px solid;
+  text-transform: uppercase;
+
+  &.is-large-gallery {
+    .likemind__link button {
+      display: block;
+    }
+
+    .likemind__images {
+      filter: none;
+      height: auto;
+      overflow-x: scroll;
+      padding: 0 0 var(--gutter);
+
+      @media (max-width: 767px) {
+        margin: 0 calc(0.5 * var(--gutter)) var(--gutter);
+
+        img {
+          margin: 0 calc(0.5 * var(--gutter));
+          width: calc(100vw - (2 * var(--gutter)));
+        }
+      }
+
+      @media (min-width: 768px) {
+        border-bottom: 1px solid;
+        height: calc(100vh - 115px);
+        max-height: 720px;
+      }
+    }
+  }
+
+  &__header {
+    display: grid;
+    gap: var(--gutter);
+    grid-template:
+      "logo link" auto
+      "info info" auto
+      "talent talent" auto
+      / 1fr max-content;
+    padding: 30px var(--gutter);
+
+    @media (min-width: 768px) {
+      grid-template:
+        "logo info talent link" auto
+        / max-content max-content 1fr max-content;
+      padding: var(--gutter);
+    }
+  }
+
+  &__logo {
+    grid-area: logo;
+    height: 43px;
+
+    @media (min-width: 768px) {
+      height: 55px;
+    }
+
+    img,
+    svg {
+      height: 100%;
+    }
+  }
+
+  &__info {
+    grid-area: info;
+  }
+
+  &__speakers-music {
+    display: grid;
+    gap: 20px 0;
+    grid-area: talent;
+    grid-template:
+      ". ." auto
+      / max-content 1fr;
+
+    @media (min-width: 768px) {
+      grid-template:
+        ". . . ." auto
+        / max-content 1fr max-content 1fr;
+    }
+
+    span:nth-child(odd) {
+      margin-right: 10px;
+    }
+  }
+
+  &__link {
+    grid-area: link;
+
+    @media (max-width: 767px) {
+      text-align: right;
+    }
+
+    a {
+      display: inline-block;
+      font-weight: 500;
+      text-decoration: none;
+
+      @media (min-width: 768px) {
+        border: 1px solid;
+        font-weight: normal;
+        padding: 10px;
+        text-align: center;
+      }
+    }
+
+    button {
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+      display: none;
+      font: normal 12px / 1.21 "SctoGroteskB";
+      margin: 5px 0 0;
+      padding: 0;
+      text-transform: uppercase;
+
+      @media (min-width: 768px) {
+        border: 1px solid;
+        border-radius: 0;
+        border-top: 0;
+        margin: 0;
+        padding: 10px;
+        width: 100%;
+      }
+    }
+  }
+
+  &__images {
+    display: flex;
+    filter: grayscale(100%);
+    height: 134px;
+    margin: 0 0 200px;
+    overflow: hidden;
+    transition: all 800ms ease;
+
+    @media (min-width: 768px) {
+      height: 177px;
+      margin: 0 0 270px;
+    }
+
+    img {
+      cursor: pointer;
+      height: 100%;
+      margin: 0 5px;
+
+      &:first-child,
+      &:last-child {
+        margin: 0;
+      }
+    }
+  }
+}

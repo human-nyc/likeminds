@@ -1,10 +1,10 @@
 {
   "root": true,
   "project": {
-    "name": "Next.js landing pages"
+    "name": "Likeminds"
   },
   "api": {
-    "projectId": "0k5ev4j1",
+    "projectId": "5u65bmd0",
     "dataset": "production"
   },
   "plugins": [

@@ -1,21 +1,59 @@
-import PropTypes from 'prop-types'
-import React from 'react'
-import Layout from '../components/Layout'
+import Layout from '../components/Layout';
+import Likemind from '../components/Likemind';
+import sanityClient from '../utils/client';
 
-class IndexPage extends React.Component {
-  static propTypes = {
-    config: PropTypes.object
-  }
+const query = `*[_type == 'event'] {
+  _id, date,logo, place, theme, title, website,
+  speakers[]->{title},
+  music[]->{title},
+  gallery,
+} | order(title desc) [0...25]`;
 
-  render () {
-    const {config} = this.props
+const Index = (props) => {
+  // console.log(props.data)
+  const eventsData = props.data;
+
+  const events = eventsData.map(({ _id, date, gallery, logo, place, music, speakers, theme, title, website }, index) => {
+    const year = date.slice(date.indexOf('(') + 1, date.indexOf(')'));
+    const speakersStr = speakers
+      ? speakers.map(({ title }) => title).join(', ')
+      : '';
+    const musicStr = music
+      ? music.map(({ title }) => title).join(', ')
+      : '';
+    const id = index === 1
+      ? 'pastLikemind'
+      : _id;
+
     return (
-      <Layout config={config}>
-        <h1>No route set</h1>
-        <h2>Setup automatic routes in sanity or custom routes in next.config.js</h2>
-      </Layout>
+      <Likemind
+        buttonLink={website}
+        buttonText={`VISIT ${year} WEBSITE`}
+        dates={date}
+        gallery={gallery}
+        id={id}
+        index={title}
+        key={_id}
+        location={place}
+        logo={logo}
+        music={musicStr}
+        speakers={speakersStr}
+      />
     )
-  }
-}
+  });
 
-export default IndexPage
+  return (
+    <Layout>
+      <div className='main'></div>
+      {events.slice(1)}
+    </Layout>
+  )
+};
+
+Index.getInitialProps = async () => {
+  return {
+    data: await sanityClient.fetch(query)
+  };
+};
+
+export default Index;

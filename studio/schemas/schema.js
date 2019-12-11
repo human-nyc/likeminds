@@ -4,6 +4,12 @@ import createSchema from 'part:@sanity/base/schema-creator';
 // Then import schema types from any plugins that might expose them
 import schemaTypes from 'all:part:@sanity/base/schema-type';
 
+// Likeminds
+import event from './event';
+import panel from './panel';
+import performer from './performer';
+import person from './person';
+
 // Document types
 import page from './documents/page';
 import route from './documents/route';
@@ -30,6 +36,10 @@ export default createSchema({
   // Then proceed to concatenate our our document type
   // to the ones provided by any plugins that are installed
   types: schemaTypes.concat([
+    event,
+    panel,
+    performer,
+    person,
     cta,
     embedHTML,
     figure,
