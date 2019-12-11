@@ -1,29 +1,29 @@
-import Layout from '../components/Layout';
-import Likemind from '../components/Likemind';
-import sanityClient from '../utils/client';
+import React from 'react'
+import Layout from '../components/Layout'
+import Likemind from '../components/Likemind'
+import sanityClient from '../utils/client'
 
 const query = `*[_type == 'event'] {
   _id, date,logo, place, theme, title, website,
   speakers[]->{title},
   music[]->{title},
   gallery,
-} | order(title desc) [0...25]`;
+} | order(title desc) [0...25]`
 
 const Index = (props) => {
-  // console.log(props.data)
-  const eventsData = props.data;
+  const eventsData = props.data
 
   const events = eventsData.map(({ _id, date, gallery, logo, place, music, speakers, theme, title, website }, index) => {
-    const year = date.slice(date.indexOf('(') + 1, date.indexOf(')'));
+    const year = date.slice(date.indexOf('(') + 1, date.indexOf(')'))
     const speakersStr = speakers
       ? speakers.map(({ title }) => title).join(', ')
-      : '';
+      : ''
     const musicStr = music
       ? music.map(({ title }) => title).join(', ')
-      : '';
+      : ''
     const id = index === 1
       ? 'pastLikemind'
-      : _id;
+      : _id
 
     return (
       <Likemind
@@ -40,7 +40,7 @@ const Index = (props) => {
         speakers={speakersStr}
       />
     )
-  });
+  })
 
   return (
     <Layout>
@@ -48,12 +48,12 @@ const Index = (props) => {
       {events.slice(1)}
     </Layout>
   )
-};
+}
 
 Index.getInitialProps = async () => {
   return {
     data: await sanityClient.fetch(query)
-  };
-};
+  }
+}
 
-export default Index;
+export default Index
