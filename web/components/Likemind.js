@@ -14,7 +14,7 @@ const Likemind = (props) => {
   const likemindLogo = logo ? <img src={urlFor(logo).format('png').url()} /> : ''
 
   const images = gallery
-    ? gallery.map(image => <img key={image._key} src={urlFor(image).url()} alt={image.caption} />)
+    ? gallery.map(image => <img key={image._key} src={urlFor(image).url()} alt={image.caption} loading="lazy" />)
     : ''
 
   const closeGallery = ({ currentTarget }) => {
