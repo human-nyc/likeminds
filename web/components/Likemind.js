@@ -1,36 +1,38 @@
-import client from '../utils/client';
-import imageUrlBuilder from '@sanity/image-url';
+import React from 'react'
+import PropTypes from 'prop-types'
+import client from '../utils/client'
+import imageUrlBuilder from '@sanity/image-url'
 
 const Likemind = (props) => {
-  const { dates, gallery, logo, id, location, speakers, music, buttonText, buttonLink } = props;
-  const builder = imageUrlBuilder(client);
+  const { dates, gallery, logo, id, location, speakers, music, buttonText, buttonLink } = props
+  const builder = imageUrlBuilder(client)
 
   const urlFor = function urlFor(source) {
-    return builder.image(source);
-  };
+    return builder.image(source)
+  }
 
-  const likemindLogo = logo ? <img src={urlFor(logo).format('png').url()} /> : '';
+  const likemindLogo = logo ? <img src={urlFor(logo).format('png').url()} /> : ''
 
   const images = gallery
     ? gallery.map(image => <img key={image._key} src={urlFor(image).url()} alt={image.caption} />)
-    : '';
+    : ''
 
   const closeGallery = ({ currentTarget }) => {
-    const galleryEl = currentTarget.closest('.likemind');
+    const galleryEl = currentTarget.closest('.likemind')
 
-    galleryEl.classList.remove('is-large-gallery');
+    galleryEl.classList.remove('is-large-gallery')
   }
 
   const handleClick = ({ currentTarget, target }) => {
-    const galleryEl = currentTarget.closest('.likemind');
+    const galleryEl = currentTarget.closest('.likemind')
 
     if (!galleryEl.classList.contains('is-large-gallery')) {
-      const galleryHeader = currentTarget.previousElementSibling;
+      const galleryHeader = currentTarget.previousElementSibling
 
-      galleryHeader.scrollIntoView();
-      galleryEl.classList.add('is-large-gallery');
+      galleryHeader.scrollIntoView()
+      galleryEl.classList.add('is-large-gallery')
     }
-  };
+  }
 
   return (
     <div className='likemind' id={id}>
@@ -64,6 +66,18 @@ const Likemind = (props) => {
       </div>
     </div>
   )
-};
+}
 
-export default Likemind;
+Likemind.propTypes = {
+  buttonLink: PropTypes.string,
+  buttonText: PropTypes.string,
+  dates: PropTypes.string,
+  gallery: PropTypes.array,
+  id: PropTypes.string,
+  location: PropTypes.string,
+  logo: PropTypes.object,
+  music: PropTypes.string,
+  speakers: PropTypes.string,
+}
+
+export default Likemind
