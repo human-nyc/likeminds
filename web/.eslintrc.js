@@ -1,7 +1,9 @@
 module.exports = {
   extends: ['standard', 'standard-react', 'plugin:import/errors', 'plugin:import/warnings'],
   rules: {
-    'object-curly-spacing': ['error', 'always']
+    'object-curly-spacing': ['error', 'always'],
+    'comma-dangle': ['error', 'always-multiline'],
+    'space-before-function-paren': ['error', { 'anonymous': 'always', 'named': 'never', 'asyncArrow': 'always' }]
   },
   settings: {
     react: {
