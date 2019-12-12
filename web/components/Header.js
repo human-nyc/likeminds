@@ -26,18 +26,12 @@ const Header = (props) => {
         </div>
       </div>
 
-      <ul className='header__socials'>
-        <li>
-          <a href='https://instagram.com/likeminds.camp' target='_blank'>instagram</a>
-        </li>
-        <li>
-          <a href='https://twitter.com/likeminds_camp' target='_blank'>twitter</a>
-        </li>
-        <li>
-          <a href='mailto:info@likeminds.com'>email</a>
-        </li>
-        <li><a href='#pastLikemind'>past likeminds</a></li>
-      </ul>
+      <nav className='header__socials'>
+        <a href='https://instagram.com/likeminds.camp' target='_blank'>instagram</a>
+        <a href='https://twitter.com/likeminds_camp' target='_blank'>twitter</a>
+        <a href='mailto:info@likeminds.com'>email</a>
+        <a href='#pastLikemind'>past likeminds</a>
+      </nav>
     </div >
   )
 }
