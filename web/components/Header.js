@@ -29,7 +29,7 @@ const Header = (props) => {
       <nav className='header__socials'>
         <a href='https://instagram.com/likeminds.camp' target='_blank'>instagram</a>
         <a href='https://twitter.com/likeminds_camp' target='_blank'>twitter</a>
-        <a href='mailto:info@likeminds.com'>email</a>
+        <a href='mailto:info@likeminds.camp'>email</a>
         <a href='#pastLikemind'>past likeminds</a>
       </nav>
     </div >
