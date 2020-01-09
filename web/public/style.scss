@@ -64,7 +64,7 @@ svg.no-text {
 
 .header {
   display: grid;
-  gap: 20px;
+  gap: var(--gutter);
   grid-template:
     "logo" auto
     "info" 1fr
@@ -97,6 +97,7 @@ svg.no-text {
 
   &__info {
     grid-area: info;
+    position: relative;
     text-transform: uppercase;
 
     p {
@@ -108,12 +109,21 @@ svg.no-text {
         margin-bottom: 0;
       }
     }
+
+    button {
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+      font: normal 12px / 1.21 "SctoGroteskB";
+      padding: 0;
+      text-decoration: underline;
+      text-transform: uppercase;
+    }
   }
 
   &__button {
     align-self: flex-start;
     grid-area: button;
-    position: relative;
 
     a {
       background: transparent;
@@ -175,9 +185,13 @@ svg.no-text {
     pointer-events: none;
     position: absolute;
     left: 0;
-    top: calc(100% + var(--gutter));
+    right: 0;
     text-transform: uppercase;
-    width: 350px;
+
+    @media (min-width: 768px) {
+      left: calc(100% + var(--gutter));
+      width: 350px;
+    }
 
     &.is-visible {
       display: block;
@@ -185,23 +199,24 @@ svg.no-text {
     }
 
     label,
-    input {
-      display: block;
-    }
-
-    input {
+    input,
+    button {
+      background: transparent;
       border: 0;
+      display: block;
       font: normal 12px / 1.21 "SctoGroteskB";
       padding: 0;
       text-transform: uppercase;
+    }
 
+    button {
+      cursor: pointer;
+    }
+
+    input {
       &[type="email"] {
         margin: 10px 0 0;
         width: 100%;
-      }
-
-      &[type="submit"] {
-        cursor: pointer;
       }
 
       ::placeholder,
