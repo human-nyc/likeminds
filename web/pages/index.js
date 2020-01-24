@@ -45,7 +45,15 @@ const Index = (props) => {
 
   return (
     <Layout>
-      <div className='main' />
+      <div className='main'>
+
+        <div className='video'>
+          <video autoPlay loop muted playsInline="">
+            <source src='http://files.human-nyc.com/likeminds/LM_HomepageVid_v01.mp4' type='video/mp4' />
+          </video>
+        </div>
+
+      </div>
       {events.slice(1)}
     </Layout>
   )

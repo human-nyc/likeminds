@@ -73,11 +73,11 @@ svg.no-text {
     / auto;
 
   font-size: 12px;
-  height: calc(100vh - 76px);
+  // height: calc(100vh - 76px);
   padding: var(--gutter);
 
   @media (min-width: 375px) {
-    height: calc(100vh - 116px);
+    // height: calc(100vh - 116px);
   }
 
   @media (min-width: 768px) {
@@ -264,12 +264,7 @@ svg.no-text {
 }
 
 .main {
-  padding: 0 var(--gutter);
-
-  @media (min-width: 768px) {
-    margin: 0 0 100px;
-    min-height: calc(100vh - var(--header-height));
-  }
+  padding: 0 var(--gutter) var(--gutter);
 
   h1 {
     margin: 0;
@@ -290,6 +285,11 @@ svg.no-text {
 
   dd {
     margin: 0;
+  }
+  .video {
+    video {
+      width: 100%;
+    }
   }
 }
 
