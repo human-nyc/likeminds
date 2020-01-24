@@ -266,11 +266,6 @@ svg.no-text {
 .main {
   padding: 0 var(--gutter) var(--gutter);
 
-  @media (min-width: 768px) {
-    // margin: 0 0 100px;
-    // min-height: calc(100vh - var(--header-height));
-  }
-
   h1 {
     margin: 0;
   }
@@ -294,7 +289,6 @@ svg.no-text {
   .video {
     video {
       width: 100%;
-      // height: 100%;
     }
   }
 }
