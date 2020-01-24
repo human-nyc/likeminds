@@ -47,9 +47,9 @@ const Index = (props) => {
     <Layout>
       <div className='main'>
 
-        <div className="video">
+        <div className='video'>
           <video autoPlay loop muted playsInline="">
-            <source src="http://files.human-nyc.com/likeminds/LM_HomepageVid_v01.mp4" type="video/mp4" />
+            <source src='http://files.human-nyc.com/likeminds/LM_HomepageVid_v01.mp4' type='video/mp4' />
           </video>
         </div>
 
