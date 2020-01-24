@@ -45,7 +45,16 @@ const Index = (props) => {
 
   return (
     <Layout>
-      <div className='main' />
+      <div className='main'>
+
+        <div className="video">
+          <video autoPlay loop muted playsInline="">
+            {/* <source src="https://cdn.shopify.com/s/files/1/0051/2330/9640/files/SuMustecaplioglu_BAON_2019.mp4?113673" type="video/mp4" /> */}
+            <source src="/LM_HomepageVid_v01.mp4" type="video/mp4" />
+          </video>
+        </div>
+
+      </div>
       {events.slice(1)}
     </Layout>
   )
