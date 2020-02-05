@@ -54,8 +54,7 @@ const Index = (props) => {
         </div>
 
       </div>
-      {events}
-      {/* {events.slice(1)} */}
+      {events.slice(1)}
     </Layout>
   )
 }
