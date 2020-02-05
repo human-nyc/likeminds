@@ -4,13 +4,14 @@ import client from '../utils/client'
 import imageUrlBuilder from '@sanity/image-url'
 
 const Likemind = (props) => {
-  const { dates, gallery, logo, id, location, speakers, music, buttonText, buttonLink } = props
+  const { dates, gallery, logo, id, layout, location, speakers, music, buttonText, buttonLink } = props
   const builder = imageUrlBuilder(client)
 
   const urlFor = function urlFor(source) {
     return builder.image(source)
   }
 
+  
   const likemindLogo = logo ? <img src={urlFor(logo).format('png').url()} /> : ''
 
   const images = gallery
@@ -19,7 +20,6 @@ const Likemind = (props) => {
 
   const closeGallery = ({ currentTarget }) => {
     const galleryEl = currentTarget.closest('.likemind')
-
     galleryEl.classList.remove('is-large-gallery')
   }
 
@@ -34,7 +34,7 @@ const Likemind = (props) => {
     }
   }
 
-  return (
+  const eventLayout = (
     <div className='likemind' id={id}>
       <div className='likemind__header'>
         <div className='likemind__logo'>
@@ -66,6 +66,11 @@ const Likemind = (props) => {
       </div>
     </div>
   )
+
+
+  return (
+    {eventLayout}
+  )
 }
 
 Likemind.propTypes = {
@@ -74,6 +79,7 @@ Likemind.propTypes = {
   dates: PropTypes.string,
   gallery: PropTypes.array,
   id: PropTypes.string,
+  layout: PropTypes.string,
   location: PropTypes.string,
   logo: PropTypes.object,
   music: PropTypes.string,

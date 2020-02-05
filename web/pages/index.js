@@ -22,9 +22,12 @@ const Index = (props) => {
     const musicStr = music
       ? music.map(({ title }) => title).join(', ')
       : ''
-    const id = index === 1
-      ? 'pastLikemind'
-      : _id
+    // const id = index === 1
+    //   ? 'pastLikemind'
+    //   : _id
+    const layout = index === 1
+      ? 'current'
+      : ''
 
     return (
       <Likemind
@@ -32,9 +35,10 @@ const Index = (props) => {
         buttonText={`VISIT ${year} WEBSITE`}
         dates={date}
         gallery={gallery}
-        id={id}
+        id={_id}
         index={title}
         key={_id}
+        layout={layout}
         location={place}
         logo={logo}
         music={musicStr}
@@ -55,7 +59,6 @@ const Index = (props) => {
 
       </div>
       {events}
-      {/* {events.slice(1)} */}
     </Layout>
   )
 }
