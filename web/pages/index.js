@@ -38,9 +38,14 @@ const Index = (props) => {
 
   const events = data.map(({ _id, date, gallery, logo, place, music, speakers, workshops, artists, theme, title, website }, index) => {
     const year = date.slice(date.indexOf('(') + 1, date.indexOf(')'))
+    
     const layout = index === 0
       ? 'current'
       : ''
+
+    const id = index === 1
+      ? 'pastLikemind'
+      : _id
 
     return (
       <Event
@@ -48,7 +53,7 @@ const Index = (props) => {
         buttonText={`VISIT ${year} WEBSITE`}
         dates={date}
         gallery={gallery}
-        id={_id}
+        id={id}
         index={title}
         key={_id}
         layout={layout}
