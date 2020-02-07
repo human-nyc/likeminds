@@ -59,6 +59,11 @@ export default {
       ]
     },
     {
+      title: 'Speakers Logo',
+      name: 'speakerslogo',
+      type: 'image'
+    },
+    {
       title: 'Music',
       name: 'music',
       type: 'array',
@@ -70,6 +75,29 @@ export default {
           ]
         }
       ]
+    },
+    {
+      title: 'Music Logo',
+      name: 'musiclogo',
+      type: 'image'
+    },
+    {
+      title: 'Workshops',
+      name: 'workshops',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [
+            { type: 'workshopper' }
+          ]
+        }
+      ]
+    },
+    {
+      title: 'Workshops Logo',
+      name: 'workshopslogo',
+      type: 'image'
     },
     {
       title: 'Gallery',
