@@ -5,9 +5,10 @@ import createSchema from 'part:@sanity/base/schema-creator';
 import schemaTypes from 'all:part:@sanity/base/schema-type';
 
 // Likeminds
-import event from './event';
-import panel from './panel';
 import artist from './artist';
+import event from './event';
+import infoItem from './infoItem';
+import panel from './panel';
 import performer from './performer';
 import person from './person';
 import workshopper from './workshopper';
@@ -48,6 +49,7 @@ export default createSchema({
     embedHTML,
     figure,
     hero,
+    infoItem,
     imageSection,
     internalLink,
     link,

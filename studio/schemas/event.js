@@ -100,6 +100,42 @@ export default {
       type: 'image'
     },
     {
+      title: 'Artists',
+      name: 'artists',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [
+            { type: 'artist' }
+          ]
+        }
+      ]
+    },
+    {
+      title: 'Artists Logo',
+      name: 'artistslogo',
+      type: 'image'
+    },
+    {
+      title: 'Information',
+      name: 'information',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [
+            { type: 'infoItem' }
+          ]
+        }
+      ]
+    },
+    {
+      title: 'Information Logo',
+      name: 'informationlogo',
+      type: 'image'
+    },
+    {
       title: 'Gallery',
       name: 'gallery',
       type: 'array',
