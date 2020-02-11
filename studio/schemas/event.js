@@ -45,6 +45,11 @@ export default {
       type: 'url'
     },
     {
+      title: 'Speakers Logo',
+      name: 'speakerslogo',
+      type: 'image'
+    },
+    {
       title: 'Speakers',
       name: 'speakers',
       type: 'array',
@@ -59,8 +64,8 @@ export default {
       ]
     },
     {
-      title: 'Speakers Logo',
-      name: 'speakerslogo',
+      title: 'Music Logo',
+      name: 'musiclogo',
       type: 'image'
     },
     {
@@ -77,8 +82,8 @@ export default {
       ]
     },
     {
-      title: 'Music Logo',
-      name: 'musiclogo',
+      title: 'Workshops Logo',
+      name: 'workshopslogo',
       type: 'image'
     },
     {
@@ -95,8 +100,8 @@ export default {
       ]
     },
     {
-      title: 'Workshops Logo',
-      name: 'workshopslogo',
+      title: 'Artists Logo',
+      name: 'artistslogo',
       type: 'image'
     },
     {
@@ -113,8 +118,8 @@ export default {
       ]
     },
     {
-      title: 'Artists Logo',
-      name: 'artistslogo',
+      title: 'Information Logo',
+      name: 'informationlogo',
       type: 'image'
     },
     {
@@ -129,11 +134,6 @@ export default {
           ]
         }
       ]
-    },
-    {
-      title: 'Information Logo',
-      name: 'informationlogo',
-      type: 'image'
     },
     {
       title: 'Gallery',
