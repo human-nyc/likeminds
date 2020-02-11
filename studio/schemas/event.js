@@ -45,6 +45,11 @@ export default {
       type: 'url'
     },
     {
+      title: 'Speakers Logo',
+      name: 'speakerslogo',
+      type: 'image'
+    },
+    {
       title: 'Speakers',
       name: 'speakers',
       type: 'array',
@@ -59,6 +64,11 @@ export default {
       ]
     },
     {
+      title: 'Music Logo',
+      name: 'musiclogo',
+      type: 'image'
+    },
+    {
       title: 'Music',
       name: 'music',
       type: 'array',
@@ -67,6 +77,60 @@ export default {
           type: 'reference',
           to: [
             { type: 'performer' }
+          ]
+        }
+      ]
+    },
+    {
+      title: 'Workshops Logo',
+      name: 'workshopslogo',
+      type: 'image'
+    },
+    {
+      title: 'Workshops',
+      name: 'workshops',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [
+            { type: 'workshopper' }
+          ]
+        }
+      ]
+    },
+    {
+      title: 'Artists Logo',
+      name: 'artistslogo',
+      type: 'image'
+    },
+    {
+      title: 'Artists',
+      name: 'artists',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [
+            { type: 'artist' }
+          ]
+        }
+      ]
+    },
+    {
+      title: 'Information Logo',
+      name: 'informationlogo',
+      type: 'image'
+    },
+    {
+      title: 'Information',
+      name: 'information',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [
+            { type: 'infoItem' }
           ]
         }
       ]
