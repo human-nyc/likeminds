@@ -142,8 +142,6 @@ const Event = (props) => {
 }
 
 Event.propTypes = {
-  buttonLink: PropTypes.string,
-  buttonText: PropTypes.string,
   date: PropTypes.string,
   gallery: PropTypes.array,
   id: PropTypes.string,
@@ -159,7 +157,8 @@ Event.propTypes = {
   artists: PropTypes.array,
   artistslogo: PropTypes.object,
   information: PropTypes.array,
-  informationlogo: PropTypes.object
+  informationlogo: PropTypes.object,
+  website: PropTypes.string
 }
 
 export default Event

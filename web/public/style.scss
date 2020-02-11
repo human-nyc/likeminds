@@ -299,6 +299,7 @@ svg.no-text {
   
   &.current {
     border-top: none;
+    display: none;
   }
 
   &.is-large-gallery {
