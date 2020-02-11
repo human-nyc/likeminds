@@ -6,12 +6,12 @@ import ItemsGrid from './ItemsGrid'
 
 const Event = (props) => {
   const {
-    dates,
+    date,
     gallery,
     logo,
-    id,
+    _id,
     index,
-    location,
+    place,
     speakers,
     speakerslogo,
     music,
@@ -22,8 +22,7 @@ const Event = (props) => {
     artistslogo,
     information,
     informationlogo,
-    buttonText,
-    buttonLink
+    website
   } = props
 
   console.log({props})
@@ -33,8 +32,6 @@ const Event = (props) => {
   const urlFor = function urlFor(source) {
     return builder.image(source)
   }
-
-
   
   const eventLogo = logo ? <img src={urlFor(logo).format('png').url()} /> : ''
 
@@ -92,22 +89,26 @@ const Event = (props) => {
   const musicStr = music
     ? music.map(({ title }) => title).join(', ')
     : ''
-    
-  const eventLayout = index == 0
+  
+  const id = index === 1
+    ? 'pastLikemind'
+    : _id
+
+  const eventLayout = index === 0
     ? (
         <div className='event current'>
           {currentEventItems}
         </div>
       )
     : (
-      <div className='event'>
+      <div className='event' id={id} >
         <div className='event__header'>
           <div className='event__logo'>
             {eventLogo}
           </div>
 
           <div className='event__info'>
-            <span>{dates}<br />{location}</span>
+            <span>{date}<br />{place}</span>
           </div>
 
           <div className='event__speakers-music'>
@@ -119,9 +120,9 @@ const Event = (props) => {
 
           <div className='event__link'>
             <a
-              href={buttonLink}
+              href={website}
               target='_blank'
-            >{buttonText}</a>
+            >{`VISIT ${date.slice(date.indexOf('(') + 1, date.indexOf(')'))} WEBSITE`}</a>
             <button onClick={closeGallery}>Close Gallery</button>
           </div>
         </div>
@@ -143,11 +144,11 @@ const Event = (props) => {
 Event.propTypes = {
   buttonLink: PropTypes.string,
   buttonText: PropTypes.string,
-  dates: PropTypes.string,
+  date: PropTypes.string,
   gallery: PropTypes.array,
   id: PropTypes.string,
   layout: PropTypes.string,
-  location: PropTypes.string,
+  place: PropTypes.string,
   logo: PropTypes.object,
   music: PropTypes.array,
   musiclogo: PropTypes.object,

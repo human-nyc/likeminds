@@ -47,63 +47,6 @@ const query = `*[_type == 'event'] {
 
 const Index = ({data}) => {
 
-  const events = data.map((
-    {
-      _id,
-      date,
-      gallery,
-      logo,
-      place,
-      music,
-      musiclogo,
-      speakers,
-      speakerslogo,
-      workshops,
-      workshopslogo,
-      artists,
-      artistslogo,
-      information,
-      informationlogo,
-      theme,
-      title,
-      website 
-    },
-    index) => {
-    const year = date.slice(date.indexOf('(') + 1, date.indexOf(')'))
-    
-    const layout = index === 0
-      ? 'current'
-      : ''
-
-    const id = index === 1
-      ? 'pastLikemind'
-      : _id
-
-    return (
-      <Event
-        buttonLink={website}
-        buttonText={`VISIT ${year} WEBSITE`}
-        dates={date}
-        gallery={gallery}
-        id={id}
-        index={title}
-        key={_id}
-        location={place}
-        logo={logo}
-        music={music}
-        musicLogo={musiclogo}
-        speakers={speakers}
-        speakersLogo={speakerslogo}
-        workshops={workshops}
-        workshopsLogo={workshopslogo}
-        artists={artists}
-        artistsLogo={artistslogo}
-        information={information}
-        informationLogo={informationlogo}
-      />
-    )
-  })
-
   return (
     <Layout>
       <div className='main'>

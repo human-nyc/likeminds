@@ -20,7 +20,7 @@ const ItemsGrid = (props) => {
 
         const itemImage = item.avatar 
           ? <div className='item-image'>
-            <img src={urlFor(item.avatar).url()} alt={item.title} loading='lazy' />
+            <img src={urlFor(item.avatar).width(300).url()} alt={item.title} loading='lazy' />
           </div>
           : ''
 
