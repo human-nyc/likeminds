@@ -5,38 +5,70 @@ import Event from '../components/Event'
 import sanityClient from '../utils/client'
 
 const query = `*[_type == 'event'] {
-  _id, date, gallery, logo, place,
+  _id, date, gallery,
+  logo,
+  musiclogo,
+  place,
   music[]->{
-    avatar[]->{image},
+    avatar,
     title,
     blurb,
     website
   },
   speakers[]->{
-    avatar[]->{image},
+    avatar,
     title,
     blurb,
     website
   },
+  speakerslogo,
   workshops[]->{
-    avatar[]->{image},
+    avatar,
     title,
     blurb,
     website
   },
+  workshopslogo,
   artists[]->{
-    avatar[]->{image},
+    avatar,
     title,
     blurb,
     website
   },
+  artistsLogo,
+  information[]->{
+    title,
+    blurb,
+    website
+  },
+  informationlogo,
   theme, title, website
 } | order(title desc) [0...25]`
 
-const Index = (props) => {
-  const { data } = props
+const Index = ({data}) => {
 
-  const events = data.map(({ _id, date, gallery, logo, place, music, speakers, workshops, artists, theme, title, website }, index) => {
+  const events = data.map((
+    {
+      _id,
+      date,
+      gallery,
+      logo,
+      place,
+      music,
+      musiclogo,
+      speakers,
+      speakerslogo,
+      workshops,
+      workshopslogo,
+      artists,
+      artistslogo,
+      information,
+      informationlogo,
+      theme,
+      title,
+      website 
+    },
+    index) => {
     const year = date.slice(date.indexOf('(') + 1, date.indexOf(')'))
     
     const layout = index === 0
@@ -56,13 +88,18 @@ const Index = (props) => {
         id={id}
         index={title}
         key={_id}
-        layout={layout}
         location={place}
         logo={logo}
         music={music}
+        musicLogo={musiclogo}
         speakers={speakers}
+        speakersLogo={speakerslogo}
         workshops={workshops}
+        workshopsLogo={workshopslogo}
         artists={artists}
+        artistsLogo={artistslogo}
+        information={information}
+        informationLogo={informationlogo}
       />
     )
   })
@@ -76,7 +113,7 @@ const Index = (props) => {
           </video>
         </div>
       </div>
-      {events}
+      {data.map((event, idx) => <Event key={idx} index={idx} {...event} />)}
     </Layout>
   )
 }

@@ -5,28 +5,29 @@ import imageUrlBuilder from '@sanity/image-url'
 
 
 const ItemsGrid = (props) => {
-  const { title, items } = props
+  const { title, logo, items } = props
   const builder = imageUrlBuilder(client)
 
   const urlFor = function urlFor(source) {
     return builder.image(source)
   }
+  const gridLogo = logo
+    ? <img src={urlFor(logo).url()} alt={title} loading='lazy' />
+    : <h2>{title}</h2>
+
   const allItems = items  
     ? items.map((item, index) => {
 
         const itemImage = item.avatar 
-          ? <img src={urlFor(item.avatar).url()} alt={item.title} loading='lazy' />
-          : <img src='image.png' alt={item.title} loading='lazy' />
-
-        console.log('item:', item)
-        console.log('item.avatar:', item.avatar)
+          ? <div className='item-image'>
+            <img src={urlFor(item.avatar).url()} alt={item.title} loading='lazy' />
+          </div>
+          : ''
 
         return (
 
           <div key={index} className='item'>
-            <div className='item-image'>
-              {itemImage}
-            </div>
+            {itemImage}
             <div className='item-info'>
               <div className='item-title'>
                 {item.title}
@@ -47,7 +48,7 @@ const ItemsGrid = (props) => {
     <div className='itemsGrid-wrapper'>
       <div className='itemsGrid-header'>
         <div className='itemsGrid-logo'>
-          {title}
+          {gridLogo}
         </div>
       </div>
       <div className='itemsGrid'>
@@ -58,7 +59,9 @@ const ItemsGrid = (props) => {
 }
 
 ItemsGrid.propTypes = {
-  items: PropTypes.array
+  items: PropTypes.array,
+  title: PropTypes.string,
+  logo: PropTypes.object
 }
 
 export default ItemsGrid

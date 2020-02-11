@@ -5,12 +5,35 @@ import imageUrlBuilder from '@sanity/image-url'
 import ItemsGrid from './ItemsGrid'
 
 const Event = (props) => {
-  const { dates, gallery, logo, id, layout, location, speakers, music, workshops, artists, buttonText, buttonLink } = props
+  const {
+    dates,
+    gallery,
+    logo,
+    id,
+    index,
+    location,
+    speakers,
+    speakerslogo,
+    music,
+    musiclogo,
+    workshops,
+    workshopslogo,
+    artists,
+    artistslogo,
+    information,
+    informationlogo,
+    buttonText,
+    buttonLink
+  } = props
+
+  console.log({props})
+
   const builder = imageUrlBuilder(client)
 
   const urlFor = function urlFor(source) {
     return builder.image(source)
   }
+
 
   
   const eventLogo = logo ? <img src={urlFor(logo).format('png').url()} /> : ''
@@ -38,19 +61,28 @@ const Event = (props) => {
     <div className='currentContainer'>
       <ItemsGrid
         title="Speakers"
+        logo={speakerslogo}
         items={speakers}
-      />
+        />
       <ItemsGrid
         title="Music"
+        logo={musiclogo}
         items={music}
       />
       <ItemsGrid
         title="Workshops"
+        logo={workshopslogo}
         items={workshops}
         />
       <ItemsGrid
         title="Artists"
+        logo={artistslogo}
         items={artists}
+      />
+      <ItemsGrid
+        title="Information"
+        logo={informationlogo}
+        items={information}
       />
     </div>
   )
@@ -61,7 +93,7 @@ const Event = (props) => {
     ? music.map(({ title }) => title).join(', ')
     : ''
     
-  const eventLayout = layout == 'current'
+  const eventLayout = index == 0
     ? (
         <div className='event current'>
           {currentEventItems}
@@ -102,7 +134,7 @@ const Event = (props) => {
 
 
   return (
-    <div className='event' id={id}>
+    <div id={id}>
       {eventLayout}
     </div>
   )
@@ -118,9 +150,15 @@ Event.propTypes = {
   location: PropTypes.string,
   logo: PropTypes.object,
   music: PropTypes.array,
+  musiclogo: PropTypes.object,
   speakers: PropTypes.array,
+  speakerslogo: PropTypes.object,
   workshops: PropTypes.array,
+  workshopslogo: PropTypes.object,
   artists: PropTypes.array,
+  artistslogo: PropTypes.object,
+  information: PropTypes.array,
+  informationlogo: PropTypes.object
 }
 
 export default Event
