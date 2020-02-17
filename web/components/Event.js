@@ -66,7 +66,7 @@ const Event = (props) => {
         logo={musiclogo}
         items={music}
       />
-      {/* <ItemsGrid
+      <ItemsGrid
         title="Workshops"
         logo={workshopslogo}
         items={workshops}
@@ -80,7 +80,7 @@ const Event = (props) => {
         title="Information"
         logo={informationlogo}
         items={information}
-      /> */}
+      /> 
     </div>
   )
   const speakersStr = speakers
