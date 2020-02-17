@@ -35,7 +35,7 @@ const query = `*[_type == 'event'] {
     blurb,
     website
   },
-  artistsLogo,
+  artistslogo,
   information[]->{
     title,
     blurb,
