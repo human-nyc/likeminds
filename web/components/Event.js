@@ -75,12 +75,12 @@ const Event = (props) => {
         title="Artists"
         logo={artistslogo}
         items={artists}
-      /> */}
+      /> 
       <ItemsGrid
         title="Information"
         logo={informationlogo}
         items={information}
-      /> 
+      /> */}
     </div>
   )
   const speakersStr = speakers
