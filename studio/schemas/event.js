@@ -136,6 +136,11 @@ export default {
       ]
     },
     {
+      title: 'Video',
+      name: 'video',
+      type: 'file'
+    },
+    {
       title: 'Gallery',
       name: 'gallery',
       type: 'array',
