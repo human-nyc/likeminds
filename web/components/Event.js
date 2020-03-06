@@ -22,6 +22,7 @@ const Event = (props) => {
     artistslogo,
     information,
     informationlogo,
+    video,
     website
   } = props
 
@@ -158,6 +159,7 @@ Event.propTypes = {
   artistslogo: PropTypes.object,
   information: PropTypes.array,
   informationlogo: PropTypes.object,
+  video: PropTypes.object,
   website: PropTypes.string
 }
 

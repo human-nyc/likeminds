@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Layout from '../components/Layout'
 import Event from '../components/Event'
 import sanityClient from '../utils/client'
+import imageUrlBuilder from '@sanity/image-url'
 
 const query = `*[_type == 'event'] {
   _id, date, gallery,
@@ -42,7 +43,9 @@ const query = `*[_type == 'event'] {
     website
   },
   informationlogo,
-  theme, title, website
+  theme, title, 
+  "videoURL": video.asset->url,
+  website
 } | order(title desc) [0...25]`
 
 const Index = ({data}) => {
@@ -52,7 +55,7 @@ const Index = ({data}) => {
       <div className='main'>
         <div className='video'>
           <video autoPlay loop muted playsInline="">
-            <source src='http://files.human-nyc.com/likeminds/LM_HomepageVid_v01.mp4' type='video/mp4' />
+            <source src={data[0].videoURL} type='video/mp4' />
           </video>
         </div>
       </div>

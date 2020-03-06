@@ -525,7 +525,6 @@ svg.no-text {
 .item {
   padding: 0 var(--gutter) var(--gutter);
   display: grid;
-  // grid-template: 1fr / 137px 1fr;
   grid-template-columns: auto 1fr;
   text-transform: none;
 }
