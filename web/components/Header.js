@@ -29,7 +29,7 @@ const Header = () => {
       </div>
 
       <div className='header__info'>
-        <p><Logo classes='no-text' /> is well-curated weekend of speakers, music, workshops, food, and drink. Since 2016, our goal has been to bring together people of all backgrounds to explore a single theme through each other's work.</p>
+        <p><Logo classes='no-text' /> is a well-curated weekend of speakers, music, workshops, food, and drink. Since 2016, our goal has been to bring together people of all backgrounds to explore a single theme through each other's work.</p>
         <p><Logo classes='no-text' /> returns <span className='animate'>September 25-27 (2020).</span> <button onClick={showSignUp} type='button'>Sign Up</button> for announcements.</p>
         <div className={`header__signup js-signup ${modifier}`}>
           <label htmlFor='headerSignup'>STAY TUNED FOR SPEAKER and MUSIC ANNOUNCEMENTS AS WELL SPECIFIC INFORMATION LEADING UP TO LIKEMINDS.</label>
